@@ -315,14 +315,14 @@ export const AtelierCatalog: React.FC = () => {
           {/* Product Grid Area */}
           <div className="lg:col-span-3 space-y-8">
             {isLoading ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                 {[1, 2, 3, 4, 5, 6].map((n) => (
-                  <div key={n} className="bg-white rounded-2xl h-96 animate-pulse p-4 border border-[#F4E3DF]" />
+                  <div key={n} className="bg-white rounded-2xl h-72 sm:h-96 animate-pulse p-3 sm:p-4 border border-[#F4E3DF]" />
                 ))}
               </div>
             ) : products.length > 0 ? (
               <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                   {products.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
