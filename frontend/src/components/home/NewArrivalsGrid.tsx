@@ -69,19 +69,19 @@ export const NewArrivalsGrid: React.FC = () => {
 
         {/* Product Grid */}
         {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
             {[1, 2, 3, 4].map((n) => (
-              <div key={n} className="bg-white rounded-2xl h-96 animate-pulse p-4 flex flex-col justify-between border border-[#F4E3DF]">
-                <div className="bg-[#FAF5F3] h-64 rounded-xl" />
-                <div className="space-y-2 mt-4">
-                  <div className="h-4 bg-[#FAF5F3] rounded w-3/4" />
-                  <div className="h-4 bg-[#FAF5F3] rounded w-1/2" />
+              <div key={n} className="bg-white rounded-2xl h-72 sm:h-96 animate-pulse p-3 sm:p-4 flex flex-col justify-between border border-[#F4E3DF]">
+                <div className="bg-[#FAF5F3] h-44 sm:h-64 rounded-xl" />
+                <div className="space-y-2 mt-3 sm:mt-4">
+                  <div className="h-3 sm:h-4 bg-[#FAF5F3] rounded w-3/4" />
+                  <div className="h-3 sm:h-4 bg-[#FAF5F3] rounded w-1/2" />
                 </div>
               </div>
             ))}
           </div>
         ) : products.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
