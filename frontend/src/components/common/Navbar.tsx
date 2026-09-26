@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Search, Heart, ShoppingBag, User, Menu, X, ChevronDown, ShieldCheck, Sparkles, MessageSquareHeart } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
@@ -29,6 +30,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch }) => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open to prevent background bleed and scroll conflicts
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -292,17 +305,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch }) => {
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          {/* Backdrop */}
+      {/* Mobile Menu Drawer (Portaled to document.body to prevent clipping by header's backdrop-filter/sticky container) */}
+      {isMobileMenuOpen && typeof document !== 'undefined' && createPortal(
+        <div className="fixed inset-0 z-[9999] lg:hidden">
+          {/* Backdrop covering whole viewport */}
           <div
-            className="fixed inset-0 bg-[#2D2325]/40 backdrop-blur-sm transition-opacity"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
             onClick={() => setIsMobileMenuOpen(false)}
           />
 
-          {/* Menu Drawer */}
-          <div className="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-[#FFFDFB] p-6 shadow-2xl flex flex-col justify-between overflow-y-auto animate-slide-right">
+          {/* Menu Drawer covering full screen height */}
+          <div className="fixed inset-y-0 left-0 w-[85%] max-w-sm bg-[#FFFDFB] h-[100dvh] min-h-screen p-6 shadow-2xl flex flex-col justify-between overflow-y-auto animate-slide-right z-[10000]">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-[#F4E3DF]">
                 <div>
@@ -451,7 +464,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch }) => {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   );
