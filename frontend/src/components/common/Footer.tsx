@@ -35,30 +35,30 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Newsletter Banner */}
-        <div className="bg-[#381A1B] border border-[#52292A] rounded-2xl p-8 md:p-12 mb-16 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
-          <div>
+        <div className="bg-[#381A1B] border border-[#52292A] rounded-2xl p-6 sm:p-8 md:p-12 mb-16 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left overflow-hidden">
+          <div className="max-w-xl">
             <span className="font-script text-2xl text-[#E8C4C0]">Join the Atelier</span>
             <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-wide mt-1">
               Enjoy 10% Off Your First Boutique Order
             </h3>
-            <p className="text-sm text-[#E8C4C0] mt-2 max-w-md">
+            <p className="text-sm text-[#E8C4C0] mt-2 max-w-md mx-auto lg:mx-0">
               Subscribe to receive private invitations to new collection drops, seasonal edits, and styling tips.
             </p>
           </div>
 
-          <form onSubmit={handleSubscribe} className="flex w-full lg:w-auto max-w-md gap-2">
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row w-full lg:w-auto max-w-md gap-3">
             <input
               type="email"
               placeholder="Enter your email address..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-[#2D2325] border border-[#6E3C3D] rounded-xl px-4 py-3 text-sm text-[#FAF5F3] placeholder-[#C49A8B] focus:outline-none focus:border-[#E8C4C0]"
+              className="w-full sm:flex-1 min-w-0 bg-[#2D2325] border border-[#6E3C3D] rounded-xl px-4 py-3 text-sm text-[#FAF5F3] placeholder-[#C49A8B] focus:outline-none focus:border-[#E8C4C0]"
               required
             />
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-[#D9A09A] hover:bg-[#8C5353] text-[#2D2325] hover:text-white px-6 py-3 rounded-xl font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2 flex-shrink-0 cursor-pointer"
+              className="w-full sm:w-auto bg-[#D9A09A] hover:bg-[#8C5353] text-[#2D2325] hover:text-white px-6 py-3 rounded-xl font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2 flex-shrink-0 cursor-pointer shadow-md"
             >
               <span>Subscribe</span>
               <ArrowRight className="w-4 h-4" />
