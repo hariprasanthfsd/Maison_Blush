@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blush-50: #FAF5F3;
+  --color-blush-100: #F4E3DF;
+  --color-blush-200: #E8C4C0;
+  --color-blush-300: #D9A09A;
+  --color-blush-400: #C77D77;
+  --color-blush-500: #B05E58;
+  --color-blush-600: #8C5353;
+  --color-blush-700: #6E3C3D;
+  --color-blush-800: #52292A;
+  --color-blush-900: #381A1B;
+
+  --color-rose-gold: #B8977E;
+  --color-rose-muted: #C49A8B;
+  --color-rose-dusty: #D8A79B;
+
+  --color-cream-50: #FFFDFB;
+  --color-cream-100: #FAF6F0;
+  --color-cream-200: #F5ECE3;
+  --color-cream-300: #EBE0D3;
+
+  --color-charcoal-700: #4A3E3F;
+  --color-charcoal-800: #362C2D;
+  --color-charcoal-900: #2D2325;
+  --color-charcoal: #2D2325;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-script: "Parisienne", "Great Vibes", cursive;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --shadow-boutique: 0 10px 30px -5px rgba(217, 160, 154, 0.2);
+  --shadow-boutique-hover: 0 20px 45px -10px rgba(140, 83, 83, 0.28);
+  --shadow-soft: 0 4px 20px rgba(45, 35, 37, 0.05);
+}
+
+@layer base {
+  * {
+    border-color: #F4E3DF;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: #2D2325;
+    background-color: #FAF5F3;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+
+  .font-script {
+    font-family: var(--font-script);
+  }
+}
+
+@layer utilities {
+  /* Boutique Luxury Glassmorphism */
+  .glass-header {
+    background: rgba(255, 253, 251, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 30px rgba(217, 160, 154, 0.12);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(244, 227, 223, 0.8);
+  }
+
+  .glass-pill {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(244, 227, 223, 0.6);
+  }
+
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  }
+
+  .text-shadow-md {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Luxury Gold Glow & Badge */
+  .gold-shimmer {
+    background: linear-gradient(135deg, #FAF5F3 0%, #F4E3DF 50%, #E8C4C0 100%);
+  }
+
+  /* Custom Smooth Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAF5F3;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D9A09A;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8C5353;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.03); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-right {
+  animation: slideRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 3s ease-in-out infinite;
+}
