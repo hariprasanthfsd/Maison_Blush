@@ -240,7 +240,7 @@ export const Home: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSendingInquiry}
-                  className="px-8 py-3.5 bg-[#8C5353] hover:bg-[#6E3C3D] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all inline-flex items-center gap-2 cursor-pointer shadow-boutique"
+                  className="w-full sm:w-auto px-8 py-3.5 bg-[#8C5353] hover:bg-[#6E3C3D] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all inline-flex items-center justify-center gap-2 cursor-pointer shadow-boutique"
                 >
                   <Send className="w-4 h-4" />
                   <span>{isSendingInquiry ? 'Sending Inquiry...' : 'Send Message to Concierge'}</span>
