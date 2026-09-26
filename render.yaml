@@ -1,0 +1,15 @@
+# Render Infrastructure as Code Blueprint
+# https://render.com/docs/blueprint-spec
+services:
+  # Unified Full-Stack Service (Frontend + Backend on single free Web Service)
+  - type: web
+    name: maison-blush-store
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: JwtSettings__Secret
+        generateValue: true
